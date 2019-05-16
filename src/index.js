@@ -1,7 +1,11 @@
-/* eslint-disable no-console */
+// import { set } from 'immutable';
+// An evil rogue function!
+export function mutateValue(iterable, pos, value) {
+  iterable[pos] = value;
+}
 
-import 'dotenv/config';
+export function updateState(immutable, pos, value) {
+  return immutable.set(pos, value);
+}
 
-console.log('Hello Node.js project nodemon');
-
-console.log(process.env.MY_SECRET);
+export default { mutateValue, updateState };
