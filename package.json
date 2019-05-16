@@ -1,0 +1,28 @@
+{
+  "name": "rwieruches6",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint src/**",
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "jest src"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jest": "^22.5.1",
+    "jest": "^24.8.0",
+    "nodemon": "^1.19.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.0.0"
+  }
+}
