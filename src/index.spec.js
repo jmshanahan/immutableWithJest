@@ -1,20 +1,30 @@
-import { List } from 'immutable';
-import { mutateValue, updateState } from '.';
+import createObjTodos from './index.js';
+import { Map } from 'immutable';
 
-describe('Manage Application State with Immutable.js', () => {
-  test('should see side effects when mutating original array', () => {
-    const state = ['todo1', 'todo2'];
-    const mutatedState = state; // pass in a reference
+describe.skip('Creating an Immutable Object Graph with Immutable.js Map()', () => {
+  test('should create Map() with matching keys', () => {
+    const data = {
+      todo1: {
+        title: 'Todo 1',
+        value: 'Make it happen'
+      },
+      todo2: {
+        title: 'Todo 2',
+        value: 'Make it happen'
+      }
+    };
 
-    mutateValue(mutatedState, 0, 'newTodo');
-    expect(state[0]).not.toBe('todo1'); // Uh oh, we weren't expecting this!
+    let map = Map(data);
+    expect(map.get('todo1').title).toBe('Todo 1');
   });
 
-  test('should avoid side effects when mutating original array', () => {
-    const immutableState = List(['todo1', 'todo2']);
-    const immutableState2 = immutableState;
+  test('should create Map() with keys from array tuples', () => {
+    let map = Map([['todo1', { title: 'Todo 1' }]]); // Note the array within array
+    expect(map.get('todo1').title).toBe('Todo 1');
+  });
 
-    updateState(immutableState2, 0, 'newTodo');
-    expect(immutableState.get(0)).toBe('todo1');
+  test('should create Map() with matching size to number of keys', () => {
+    let map = Map(createObjTodos(3));
+    expect(map.size).toBe(3);
   });
 });

@@ -1,11 +1,15 @@
-// import { set } from 'immutable';
-// An evil rogue function!
-export function mutateValue(iterable, pos, value) {
-  iterable[pos] = value;
-}
+import { each, range } from 'lodash';
 
-export function updateState(immutable, pos, value) {
-  return immutable.set(pos, value);
-}
+export function createObjTodos(numTodos) {
+  let obj = {};
+  each(range(numTodos), index => {
+    const todoSequence = String(index + 1);
+    obj['todo' + todoSequence] = {
+      title: 'Todo ' + todoSequence,
+      value: `Make ${todoSequence} happen`
+    };
+  });
 
-export default { mutateValue, updateState };
+  return obj;
+}
+export default createObjTodos;
