@@ -1,30 +1,69 @@
+import {
+  addTodo,
+  removeTodo,
+  updateTodo,
+  mergeTodos,
+  clearAll,
+  Todo
+} from './index.js';
 import { Map } from 'immutable';
-import createObjTodos from './index';
+import { each, range } from 'lodash';
 
-describe.skip('Creating an Immutable Object Graph with Immutable.js Map()', () => {
-  test('should create Map() with matching keys', () => {
-    const data = {
-      todo1: {
-        title: 'Todo 1',
-        value: 'Make it happen'
-      },
-      todo2: {
-        title: 'Todo 2',
-        value: 'Make it happen'
-      }
-    };
+describe('Modifying an Immutable.js Map()', () => {
+  test('should add todo to state', () => {
+    const todo = new Todo('Todo 1', "I'm a todo!", false);
 
-    const map = Map(data);
-    expect(map.get('todo1').title).toBe('Todo 1');
+    let todos = Map();
+    todos = addTodo(todos, todo);
+    expect(todos.get(todo.id)).toBe(todo);
   });
 
-  test('should create Map() with keys from array tuples', () => {
-    const map = Map([['todo1', { title: 'Todo 1' }]]); // Note the array within array
-    expect(map.get('todo1').title).toBe('Todo 1');
+  test('should remove todo from state', () => {
+    const todo = new Todo('Todo 1', "I'm a todo!", false);
+
+    let todos = Map();
+    todos = removeTodo(todos, todo);
+    expect(todos.get(todo.id)).toBeUndefined();
   });
 
-  test('should create Map() with matching size to number of keys', () => {
-    const map = Map(createObjTodos(3));
-    expect(map.size).toBe(3);
+  test('should update todo', () => {
+    const todo = new Todo('Todo 1', "I'm a todo!", false);
+
+    let todos = Map();
+    todos = addTodo(todos, todo);
+
+    todo.title = 'New Title';
+
+    todos = updateTodo(todos, todo);
+    expect(todos.get(todo.id).title).toBe('New Title');
+  });
+
+  test('should remove all todos', () => {
+    var todos = Map();
+
+    each(range(10), index => {
+      todos = addTodo(todos, new Todo('Todo ' + index, "I'm a todo!", false));
+    });
+
+    expect(todos.size).toBe(10);
+
+    todos = clearAll(todos);
+    expect(todos.size).toBe(0);
+  });
+
+  test('should merge todos', () => {
+    var todos = Map();
+    var todos2 = Map();
+
+    each(range(10), index => {
+      todos = addTodo(todos, new Todo('Todo ' + index, "I'm a todo!", false));
+    });
+
+    each(range(10), index => {
+      todos2 = addTodo(todos2, new Todo('Todo ' + index, "I'm a todo!", false));
+    });
+
+    todos = mergeTodos(todos, todos2);
+    expect(todos.size).toBe(20);
   });
 });

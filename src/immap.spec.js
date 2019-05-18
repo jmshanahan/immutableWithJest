@@ -1,8 +1,8 @@
 import { Map } from 'immutable';
 import { createMap, createArrayMap } from './immap';
 
-describe('Basic Map() tests', () => {
-  test.skip('A simple test map ', () => {
+describe.skip('Basic Map() tests', () => {
+  test('A simple test map ', () => {
     const data = createMap();
 
     const map = Map(data);
@@ -14,7 +14,7 @@ describe('Basic Map() tests', () => {
     expect(map.get('todos').todo).toBe('get the bread');
     expect(map.get('dones').done).toBe('milked cows');
   });
-  test.skip('egghead sample', () => {
+  test('egghead sample', () => {
     const map = Map([
       ['todo1', { title: 'Todo 1' }],
       ['todo2', { title: 'Todo 2', name: 'Joe' }]
