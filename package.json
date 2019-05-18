@@ -8,6 +8,11 @@
     "start": "nodemon --exec babel-node src/index.js",
     "test": "jest src"
   },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -15,8 +20,10 @@
     "@babel/core": "^7.4.4",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.4.4",
+    "babel-jest": "^24.8.0",
     "eslint": "^5.3.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
     "eslint-plugin-import": "^2.17.2",
     "eslint-plugin-jest": "^22.5.1",
     "jest": "^24.8.0",
@@ -24,6 +31,7 @@
   },
   "dependencies": {
     "dotenv": "^8.0.0",
-    "immutable": "^4.0.0-rc.12"
+    "immutable": "^4.0.0-rc.12",
+    "lodash": "^4.17.11"
   }
 }

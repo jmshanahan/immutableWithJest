@@ -1,15 +1,15 @@
 import { each, range } from 'lodash';
 
-export function createObjTodos(numTodos) {
-  let obj = {};
+const createObjTodos = numTodos => {
+  const obj = {};
   each(range(numTodos), index => {
     const todoSequence = String(index + 1);
-    obj['todo' + todoSequence] = {
-      title: 'Todo ' + todoSequence,
+    obj[`todo ${todoSequence}`] = {
+      title: `Todo  ${todoSequence}`,
       value: `Make ${todoSequence} happen`
     };
   });
 
   return obj;
-}
+};
 export default createObjTodos;
