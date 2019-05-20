@@ -73,7 +73,7 @@ describe('joes jsplay.js Map()', () => {
     expect(todos.every).toBeTruthy();
     // todos.forEach(todo => expect(todo.isCompleted).toBeTruthy());
   });
-  test('Should mark as completed', () => {
+  test('Group by', () => {
     let todos = Map();
 
     each(range(10), index => {
