@@ -12,3 +12,11 @@ export class Todo {
     return this._completed;
   }
 }
+function getTodoTexts(todos) {
+  return todos.map(todo => {
+    return todo.text;
+  });
+}
+const getCompletedTodos = todos => todos.filter(todos.completed === true);
+
+export { getTodoTexts, getCompletedTodos };
