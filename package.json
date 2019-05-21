@@ -6,7 +6,9 @@
   "scripts": {
     "lint": "eslint src/**",
     "start": "nodemon --exec babel-node src/index.js",
-    "test": "jest src"
+    "test": "jest src",
+    "test:play": "jest src/jsplay.spec.js",
+    "test:json": "jest src/json.spec.js"
   },
   "jest": {
     "testEnvironment": "node",
