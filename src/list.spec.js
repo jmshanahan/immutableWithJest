@@ -23,4 +23,16 @@ describe('Differences between the Immutable Map and List', () => {
       count++;
     });
   });
+  test('Experiment with some basic Immutable list functionality', () => {
+    let shoppingList = List(['Milk', 'Egges', 'Detergent', 'Bread', 'Steak']);
+    const newShoppingList = shoppingList.push('Sugar');
+    expect(newShoppingList.last()).toMatch(/^Sugar$/);
+    const poppedShoppingList = shoppingList.pop().pop();
+    expect(poppedShoppingList.last()).toMatch(/^Detergent$/);
+    const ruthsShoppingListJavaScript = ['Apples', 'Oranges', 'Bannas'];
+    let ruthsShoppingListImmutable = List.of(...ruthsShoppingListJavaScript);
+    // ruthsShoppingListImmutable = ruthsShoppingListImmutable.pop();
+    const fullShoppingList = newShoppingList.concat(ruthsShoppingListImmutable);
+    expect(fullShoppingList.count()).toEqual(9);
+  });
 });

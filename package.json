@@ -9,7 +9,8 @@
     "test": "jest src",
     "test:play": "jest src/jsplay.spec.js",
     "test:json": "jest src/json.spec.js",
-    "test:list": "jest src/list.spec.js"
+    "test:list": "jest src/list.spec.js",
+    "test:seq": "jest src/seq.spec.js"
   },
   "jest": {
     "testEnvironment": "node",
