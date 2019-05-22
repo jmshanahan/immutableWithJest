@@ -1,7 +1,7 @@
 {
   "name": "rwieruches6",
   "version": "1.0.0",
-  "description": "",
+  "description": "An immutablejs project that is implemented with jest. Some of the material comes from an egghead course on immutablejs",
   "main": "index.js",
   "scripts": {
     "lint": "eslint src/**",
@@ -38,5 +38,13 @@
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
     "lodash": "^4.17.11"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmshanahan/immutableWithJest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jmshanahan/immutableWithJest/issues"
+  },
+  "homepage": "https://github.com/jmshanahan/immutableWithJest#readme"
 }
